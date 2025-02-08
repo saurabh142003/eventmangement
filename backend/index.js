@@ -27,20 +27,17 @@ app.use((req, res, next) => {
 });
 
 
-
+  __dirname = path.resolve();
 // ✅ API Routes
 app.use("/api/auth", authRoutes); // Authentication Routes
 app.use("/api/events", eventRoutes); // Event Routes
-// app.use(express.static(path.join(__dirname, '/frontend/dist')));
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '/frontend/dist')));
 
 // The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
-// app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
-//   });
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend', 'build', 'index.html'));
-  });
+  res.sendFile(path.join(__dirname, 'frontend','dist', 'index.html'));
+});
+
 // ✅ WebSockets (Real-Time Attendee Updates)
 socketHandler(io);
 
