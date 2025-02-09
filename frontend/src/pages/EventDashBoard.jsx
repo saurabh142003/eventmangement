@@ -216,11 +216,7 @@ const EventDashboard = () => {
 
                                 </div>
                             </div>
-                            {!currentUser && (
-                                <div className="text-base opacity-60 ml-4 mb-4 text-blue-500 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-md w-fit">
-                                    Sign in to Join the Event
-                                </div>
-                            )}
+                          
 
                         </Link>
                     ))
