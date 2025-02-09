@@ -109,7 +109,7 @@ const navigate = useNavigate()
         // }
 
         try {
-            const response = await fetch('http://localhost:5000/api/events', {
+            const response = await fetch('https://eventmangement.onrender.com/api/events', {
                 method: 'POST',
                 headers: {
                     "Authorization": `Bearer ${currentUser.token}`, // ✅ Send token in headers

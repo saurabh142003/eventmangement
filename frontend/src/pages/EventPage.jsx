@@ -11,12 +11,12 @@ const EventPage = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        const socket = io('http://localhost:5000');
+        const socket = io('https://eventmangement.onrender.com');
 
         // ✅ Fetch event when `id` changes
         const fetchEvent = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/events/${id}`);
+                const response = await fetch(`https://eventmangement.onrender.com/api/events/${id}`);
                 const data = await response.json();
                 setEvent(data);
             } catch (error) {
@@ -44,7 +44,7 @@ const EventPage = () => {
     // ✅ Handle Joining Event
     const handleJoinEvent = async () => {
         try {
-            await axios.post(`http://localhost:5000/api/events/${id}/join`, {
+            await axios.post(`https://eventmangement.onrender.com/api/events/${id}/join`, {
                 token: currentUser.token
             });
         } catch (err) {

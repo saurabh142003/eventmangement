@@ -24,7 +24,7 @@ function SignUp() {
        
         try {
             setLoading(true)
-            const result = await fetch('http://localhost:5000/api/auth/register', {
+            const result = await fetch('https://eventmangement.onrender.com/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -19,7 +19,7 @@ const EventDashboard = () => {
     const navigate = useNavigate()
     // Initialize socket connection
     useEffect(() => {
-        const socket = io('http://localhost:5000');
+        const socket = io('https://eventmangement.onrender.com');
 
         socket.on('connect', () => {
             console.log('Connected to socket server');
@@ -42,7 +42,7 @@ const EventDashboard = () => {
     const fetchEvents = async () => {
         try {
             setLoading(true);
-            let url = 'http://localhost:5000/api/events?';
+            let url = 'https://eventmangement.onrender.com/api/events?';
 
             if (nameFilter) url += `&title=${nameFilter}`;
             if (categoryFilter !== 'all') url += `&category=${categoryFilter}`;
@@ -70,7 +70,7 @@ const EventDashboard = () => {
     const handleJoinEvent = async (eventId) => {
         try {
             setJoiningEvent(eventId);
-            const response = await axios.post(`http://localhost:5000/api/events/${eventId}/join`, {
+            const response = await axios.post(`https://eventmangement.onrender.com/api/events/${eventId}/join`, {
                 // userId: currentUser._id,
                 token: currentUser.token
             });
@@ -217,7 +217,11 @@ const EventDashboard = () => {
                                 </div>
                             </div>
                           
-
+                            {!currentUser && (
+                                <div className="text-base opacity-60 ml-4 mb-4 text-blue-500 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-md w-fit">
+                                    Sign in to Join the Event
+                                </div>
+                            )}
                         </Link>
                     ))
             )}

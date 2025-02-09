@@ -14,7 +14,7 @@ const Profile = () => {
 
     const fetchUserEvents = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/events/user/${currentUser._id}`);
+            const response = await fetch(`https://eventmangement.onrender.com/api/events/user/${currentUser._id}`);
             const data = await response.json();
             console.log(data, "this is data");
 
@@ -42,7 +42,7 @@ const Profile = () => {
         }
     
         try {
-            const response = await fetch(`http://localhost:5000/api/auth/user/delete/${currentUser._id}`, {
+            const response = await fetch(`https://eventmangement.onrender.com/api/auth/user/delete/${currentUser._id}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${currentUser.token}`, // ✅ Send token for authentication
@@ -71,7 +71,7 @@ const Profile = () => {
         }
     
         try {
-            const response = await fetch(`http://localhost:5000/api/events/event/delete/${eventId}`, {
+            const response = await fetch(`https://eventmangement.onrender.com/api/events/event/delete/${eventId}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${currentUser.token}`, // ✅ Send token for authentication

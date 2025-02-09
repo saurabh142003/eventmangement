@@ -20,7 +20,7 @@ const navigate = useNavigate()
 
   const fetchEvent = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/events/${id}`);
+      const response = await fetch(`https://eventmangement.onrender.com/api/events/${id}`);
       const data = await response.json();
       setFormData(data);
     } catch (error) {
@@ -111,7 +111,7 @@ const navigate = useNavigate()
         // }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/events/event/edit/${id}`, {
+            const response = await fetch(`https://eventmangement.onrender.com/api/events/event/edit/${id}`, {
                 method: 'PUT',
                 headers: {
                     "Authorization": `Bearer ${currentUser.token}`, // ✅ Send token in headers
