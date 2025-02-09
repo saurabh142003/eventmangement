@@ -186,7 +186,7 @@ const EventDashboard = () => {
                                             {event.isFree ? 'Free' : `$${event.price}`}
                                         </span>
                                     </div>
-                                    {currentUser && event.createdBy !== currentUser._id && (
+                                    {currentUser && event.createdBy._id !== currentUser._id && (
                                         <div className="mt-4">
                                             <button
                                                 onClick={() => handleJoinEvent(event._id)}

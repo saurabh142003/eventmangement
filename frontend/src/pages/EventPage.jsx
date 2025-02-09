@@ -87,7 +87,7 @@ const EventPage = () => {
     
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
+        <div className="min-h-screen max-w-[100vw] overflow-x-hidden bg-gray-50 py-8">
             {event && <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto">
                     {/* Event Image */}
@@ -125,7 +125,7 @@ const EventPage = () => {
                             </div>
 
                             {/* Join Button - Only shown if not creator and event not full */}
-                            {currentUser && event.createdBy !== currentUser._id && (
+                            {currentUser && event.createdBy._id !== currentUser._id && (
                                 <div className="mt-4">
                                     <button
                                         onClick={() => handleJoinEvent(event._id)}
@@ -145,6 +145,7 @@ const EventPage = () => {
                                     </button>
                                 </div>
                             )}
+                             
                         </div>
 
                         {/* Event Details */}
@@ -226,7 +227,7 @@ const EventPage = () => {
                                 </div>
 
                                 {/* Mobile Join Button */}
-                                {currentUser && event.createdBy !== currentUser._id && (
+                                {currentUser && event.createdBy._id !== currentUser._id && (
                                     <div className="mt-4">
                                         <button
                                             onClick={() => handleJoinEvent(event._id)}
@@ -247,6 +248,11 @@ const EventPage = () => {
                                         </button>
                                     </div>
                                 )}
+                                {!currentUser && (
+                                <div className="text-base opacity-60 ml-4 mb-4 text-blue-500 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-md w-fit">
+                                    Sign in to Join the Event
+                                </div>
+                            )}
                             </div>
                         </div>
                     </div>
