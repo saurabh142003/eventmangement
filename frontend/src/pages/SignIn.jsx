@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate,Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { setLoading,success,failure } from '../redux/UserSlice';
 
@@ -8,7 +8,7 @@ function SignIn() {
    
     const [formData, setFormData] = useState({ email: '', password: '' });
     // const [response, setResponse] = useState(null);
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const userr = useSelector((state) => state.user);
     const dispatch = useDispatch();
      
@@ -67,6 +67,9 @@ function SignIn() {
                 <div className='w-full'>
                     <button className='w-full uppercase bg-blue-800 p-3 mt-4 text-white rounded-md shadow-lg hover:bg-blue-700'>{userr.loading ? "Loading..." : "Sign In"}</button>
                 </div>
+                <Link to="/" className='w-full'>
+                    <button type="button" className='w-full uppercase bg-indigo-700 p-3 mt-4 text-white rounded-md shadow-lg hover:bg-blue-700'>{loading?"Loading..":"Guest Login"}</button>
+                </Link>
          
                 <div className='flex gap-2 mt-5'>
                     <p className="text-base font-thin">If you are a new user?</p>

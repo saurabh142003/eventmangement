@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 function SignUp() {
     const [formData, setFormData] = useState({name:'',email: '', password: ''});
     const [response, setResponse] = useState("");
@@ -65,6 +65,9 @@ function SignUp() {
                 <div className='w-full'>
                     <button type="submit" className='w-full uppercase bg-blue-800 p-3 mt-4 text-white rounded-md shadow-lg hover:bg-blue-700'>{loading?"Loading..":"Sign Up"}</button>
                 </div>
+                <Link to="/" className='w-full'>
+                    <button type="button" className='w-full uppercase bg-indigo-700 p-3 mt-4 text-white rounded-md shadow-lg hover:bg-blue-700'>{loading?"Loading..":"Guest Login"}</button>
+                </Link>
             
                 <div className='flex gap-2 mt-5'>
                     <p className="text-base font-thin">Already have an account?</p>
