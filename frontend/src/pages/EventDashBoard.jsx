@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const EventDashboard = () => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ const EventDashboard = () => {
     const [joiningEvent, setJoiningEvent] = useState(null); // Track which event is being joined
     const { currentUser } = useSelector((state) => state.user);
     const categories = ["festival", "technology", "entertainment", "food", "business", "sports"];
-
+    const navigate = useNavigate()
     // Initialize socket connection
     useEffect(() => {
         const socket = io('http://localhost:5000');
@@ -155,8 +155,8 @@ const EventDashboard = () => {
                                     <h5 className="text-base font-semibold mb-2">Created by: <span className='text-blue-800 capitalize'>{event.createdBy.name}</span></h5>
 
                                 </div>
-                                
-                                <p className="text-gray-600 mb-4">{event.description.length>31? event.description.substring(0,32)+"...":event.description}</p>
+
+                                <p className="text-gray-600 mb-4">{event.description.length > 31 ? event.description.substring(0, 32) + "..." : event.description}</p>
                                 <div className="space-y-2">
                                     <div className="flex items-center text-sm text-gray-500">
                                         <Calendar className="h-4 w-4 mr-2" />
@@ -210,10 +210,18 @@ const EventDashboard = () => {
                                                     "Join Event"
                                                 )}
                                             </button>
+
                                         </div>
                                     )}
+
                                 </div>
                             </div>
+                            {!currentUser && (
+                                <div className="text-base opacity-60 ml-4 mb-4 text-blue-500 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-md w-fit">
+                                    Sign in to Join the Event
+                                </div>
+                            )}
+
                         </Link>
                     ))
             )}
