@@ -157,7 +157,7 @@ const navigate = useNavigate()
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <h1 className="text-3xl font-bold mb-8">Create New Event</h1>
+          <h1 className="text-3xl font-bold mb-8">Edit a Event</h1>
           
          {formData && <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-md p-6">
             <div className="space-y-6">
