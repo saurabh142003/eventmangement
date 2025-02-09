@@ -44,9 +44,9 @@ const EventDashboard = () => {
             setLoading(true);
             let url = 'http://localhost:5000/api/events?';
 
-            // if (nameFilter) url += `&title=${nameFilter}`;
-            // if (categoryFilter !== 'all') url += `&category=${categoryFilter}`;
-            // if (dateFilter) url += `&date=${dateFilter}`;
+            if (nameFilter) url += `&title=${nameFilter}`;
+            if (categoryFilter !== 'all') url += `&category=${categoryFilter}`;
+            if (dateFilter) url += `&date=${dateFilter}`;
 
             const response = await axios.get(url);
             setEvents(response.data);
@@ -150,7 +150,12 @@ const EventDashboard = () => {
                                 className="w-full h-48 object-cover"
                             />
                             <div className="p-6">
-                                <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+                                <div className='flex justify-between'>
+                                    <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+                                    <h5 className="text-base font-semibold mb-2">Created by: <span className='text-blue-800 capitalize'>{event.createdBy.name}</span></h5>
+
+                                </div>
+                                
                                 <p className="text-gray-600 mb-4">{event.description.length>31? event.description.substring(0,32)+"...":event.description}</p>
                                 <div className="space-y-2">
                                     <div className="flex items-center text-sm text-gray-500">

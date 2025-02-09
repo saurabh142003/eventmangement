@@ -1,13 +1,30 @@
 const Event = require("../models/Event");
 
 // ✅ 1. Get All Events
+
 const getEvents = async (req, res) => {
     try {
-        const events = await Event.find();
-        console.log("inside events")
-        res.json(events);
+        const { title, category } = req.query;
+        let filter = {};
+
+        // Filter by title (case-insensitive search)
+        if (title) {
+            filter.title = { $regex: title, $options: "i" };
+        }
+
+        // Filter by category (ignore if 'all' is selected)
+        if (category && category !== "all") {
+            filter.category = category;
+        }
+
+        // Fetch filtered events and populate createdBy field (name & email)
+        const events = await Event.find(filter).populate("createdBy");
+        console.log(filter,"this is filter")
+        console.log(events,"this is events")
+        res.status(200).json(events);
     } catch (error) {
-        res.status(500).json({ message: "Error fetching events" });
+        console.error("Error fetching events:", error);
+        res.status(500).json({ message: "Failed to fetch events" });
     }
 };
 
@@ -138,8 +155,8 @@ const deleteEvent = async (req, res) => {
 const getEventById = async (req, res) => {
     try {
         const { eventId } = req.params;
-        const event = await Event.findById(eventId);
-
+        const event = await Event.findById(eventId).populate("createdBy");
+        console.log("this is eventbyId",event)
         if (!event) {
             return res.status(404).json({ message: "Event not found" });
         }

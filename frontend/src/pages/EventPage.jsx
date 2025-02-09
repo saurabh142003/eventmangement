@@ -106,6 +106,7 @@ const EventPage = () => {
                                 <h1 className="text-3xl font-bold text-gray-900 mb-2">
                                     {event.title}
                                 </h1>
+                                
                                 <div className="flex items-center space-x-4 mb-4">
                                     <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
                                         {event.category}
@@ -113,11 +114,11 @@ const EventPage = () => {
                                     <div className="flex items-center space-x-2">
                                         <img
                                             src={event.creatorImage || "https://static.vecteezy.com/system/resources/thumbnails/009/734/564/small_2x/default-avatar-profile-icon-of-social-media-user-vector.jpg"}
-                                            alt={event.creatorName || "name"}
+                                            alt={event.createdBy.name || "name"}
                                             className="h-6 w-6 rounded-full"
                                         />
                                         <span className="text-sm text-gray-600">
-                                            Hosted by {event.creatorName || "name"}
+                                            Hosted by {event.createdBy.name || "name"}
                                         </span>
                                     </div>
                                 </div>

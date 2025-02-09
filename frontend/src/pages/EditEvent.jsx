@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const EditEvent = () => {
   const fileInputRef = useRef(null);
-  const categories = ["Technology", "Entertainment", "Food", "Business", "Sports", "Education", "Other"];
+  const categories = ["festival", "technology", "entertainment", "food", "business", "sports"];
 const {currentUser} = useSelector((state)=>state.user)
 const navigate = useNavigate()
   const [formData, setFormData] = useState(null);
@@ -349,7 +349,7 @@ const navigate = useNavigate()
                 >
                   <option value="">Select a category</option>
                   {categories.map((category) => (
-                    <option key={category} value={category}>
+                    <option className="capitalize" key={category} value={category}>
                       {category}
                     </option>
                   ))}
