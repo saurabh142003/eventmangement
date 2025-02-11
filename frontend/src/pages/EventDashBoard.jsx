@@ -143,12 +143,15 @@ const EventDashboard = () => {
                 events
                     .filter(event => categoryFilter === 'all' || event.category === categoryFilter)
                     .map(event => (
-                        <Link to={`/event/${event._id}`} key={event._id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img
-                                src={event.imageUrl || '/api/placeholder/400/200'}
-                                alt={event.title}
-                                className="w-full h-48 object-cover"
-                            />
+                        <div key={event._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                            <Link to={`/event/${event._id}`}>
+                                <img
+                                    src={event.imageUrl || '/api/placeholder/400/200'}
+                                    alt={event.title}
+                                    className="w-full h-48 object-cover"
+                                />
+                            </Link>
+
                             <div className="p-6">
                                 <div className='flex justify-between'>
                                     <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
@@ -216,13 +219,13 @@ const EventDashboard = () => {
 
                                 </div>
                             </div>
-                          
+
                             {!currentUser && (
                                 <div className="text-base opacity-60 ml-4 mb-4 text-blue-500 font-semibold bg-blue-100 px-4 py-2 rounded-lg shadow-md w-fit">
                                     Sign in to Join the Event
                                 </div>
                             )}
-                        </Link>
+                        </div>
                     ))
             )}
         </div>
